@@ -42,8 +42,9 @@ modules:
       x-checker-data:
         type: json
         url: https://api.github.com/repos/stoplightio/studio/releases/latest
-        version-query: ".tag_name"
-        url-query: ".assets[] | select(.browser_download_url != null) | select(.browser_download_url | contains($version)) | select(.browser_download_url | endswith(\"stoplight-studio-linux-x86_64.AppImage\")) | .browser_download_url" 
+        tag-query: ".tag_name"
+        version-query: ".name"
+        url-query: ".assets[] | select(.browser_download_url != null) | select(.browser_download_url | contains($tag)) | select(.browser_download_url | endswith(\"stoplight-studio-linux-x86_64.AppImage\")) | .browser_download_url" 
     - type: file
       path: io.stoplight.studio.metainfo.xml
     - type: file
