@@ -19,34 +19,36 @@ finish-args:
   - --env=LD_LIBRARY_PATH=/app/usr/lib:/app
   - --talk-name=com.canonical.AppMenu.Registrar
   - --talk-name=com.canonical.AppMenu.Registrar.*
-  - --device=dri 
+  - --device=dri
 modules:
   - name: stoplight-studio
     buildsystem: simple
     only-arches: [x86_64]
     build-commands:
-    - chmod +x stoplight-studio-linux-x86_64.AppImage
-    - ./stoplight-studio-linux-x86_64.AppImage --appimage-extract
-    - mv squashfs-root/* /app
-    - install -Dm644 /app/usr/share/icons/hicolor/0x0/apps/stoplight-studio.png /app/share/icons/hicolor/256x256/apps/io.stoplight.studio.png
-    - install -Dm644 /app/usr/share/icons/hicolor/0x0/apps/stoplight-studio.png /app/usr/share/icons/hicolor/256x256/apps/io.stoplight.studio.png
-    - install -Dm644 io.stoplight.studio.metainfo.xml -t /app/share/metainfo/
-    - install -Dm644 io.stoplight.studio.desktop -t /app/share/applications/
-    - install -Dm755 stoplight-studio.sh -t /app/bin
-    - ls -l /app
+      - chmod +x stoplight-studio-linux-x86_64.AppImage
+      - ./stoplight-studio-linux-x86_64.AppImage --appimage-extract
+      - mv squashfs-root/* /app
+      - install -Dm644 /app/usr/share/icons/hicolor/0x0/apps/stoplight-studio.png
+        /app/share/icons/hicolor/256x256/apps/io.stoplight.studio.png
+      - install -Dm644 /app/usr/share/icons/hicolor/0x0/apps/stoplight-studio.png
+        /app/usr/share/icons/hicolor/256x256/apps/io.stoplight.studio.png
+      - install -Dm644 io.stoplight.studio.metainfo.xml -t /app/share/metainfo/
+      - install -Dm644 io.stoplight.studio.desktop -t /app/share/applications/
+      - install -Dm755 stoplight-studio.sh -t /app/bin
+      - ls -l /app
     sources:
-    - type: file
-      only-arches: [x86_64]
-      url: https://github.com/stoplightio/studio/releases/latest/download/stoplight-studio-linux-x86_64.AppImage
-      sha256: 3b7847346bb9c30025f2c8b77605e0a333ce6deb071adae3da6d4d267646d2b9
-      x-checker-data:
-        type: rotating-url
-        url: https://github.com/stoplightio/studio/releases/latest/download/stoplight-studio-linux-x86_64.AppImage
-    - type: file
-      path: io.stoplight.studio.metainfo.xml
-    - type: file
-      path: io.stoplight.studio.desktop
-    - type: script
-      dest-filename: stoplight-studio.sh
-      commands:
-      - env APPDIR=/app /app/AppRun --no-sandbox $*
+      - type: file
+        only-arches: [x86_64]
+        url: https://github-releases.githubusercontent.com/192797744/f7d5c8d3-3caa-45b4-a6a9-dff821e06473?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211015%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211015T124830Z&X-Amz-Expires=300&X-Amz-Signature=c24a834feab446b3aa27094cff9c6381ed2224be90c080c67c46122975f14c79&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=192797744&response-content-disposition=attachment%3B+filename%3Dstoplight-studio-linux-x86_64.AppImage&response-content-type=application%2Foctet-stream
+        sha256: 9750b1fb5c0e63ad3a741f54611c0a3c1d9927d6972778fe84e7a2ae3f1b0b8f
+        x-checker-data:
+          type: rotating-url
+          url: https://github.com/stoplightio/studio/releases/latest/download/stoplight-studio-linux-x86_64.AppImage
+      - type: file
+        path: io.stoplight.studio.metainfo.xml
+      - type: file
+        path: io.stoplight.studio.desktop
+      - type: script
+        dest-filename: stoplight-studio.sh
+        commands:
+          - env APPDIR=/app /app/AppRun --no-sandbox $*
