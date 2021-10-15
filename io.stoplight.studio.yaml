@@ -40,8 +40,10 @@ modules:
       url: https://github.com/stoplightio/studio/releases/latest/download/stoplight-studio-linux-x86_64.AppImage
       sha256: 3b7847346bb9c30025f2c8b77605e0a333ce6deb071adae3da6d4d267646d2b9
       x-checker-data:
-        type: rotating-url
-        url: https://github.com/stoplightio/studio/releases/latest/download/stoplight-studio-linux-x86_64.AppImage
+        type: json
+        url: https://api.github.com/repos/stoplightio/studio/releases/latest
+        version-query: ".tag_name"
+        url-query: ".assets[] | select(.browser_download_url != null) | select(.browser_download_url | contains($version)) | select(.browser_download_url | endswith(\"stoplight-studio-linux-x86_64.AppImage\")) | .browser_download_url" 
     - type: file
       path: io.stoplight.studio.metainfo.xml
     - type: file
