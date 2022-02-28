@@ -39,8 +39,8 @@ modules:
     sources:
       - type: file
         only-arches: [x86_64]
-        url: https://github.com/stoplightio/studio/releases/download/v2.8.0-stable.7236.git-cc3bce2/stoplight-studio-linux-x86_64.AppImage
-        sha256: ece07f6a82bfeac53b2397a60efde59f09b9dd596b09e4feaa3377fea1d0a62d
+        url: https://github.com/stoplightio/studio/releases/download/v2.8.0-stable.7260.git-04f3365/stoplight-studio-linux-x86_64.AppImage
+        sha256: 05835cdc3280891509b012e0f45b8052cd23d0a606348638e1c9ed31984f721e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/stoplightio/studio/releases/latest
