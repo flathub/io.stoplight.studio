@@ -45,7 +45,7 @@ modules:
           type: json
           url: https://api.github.com/repos/stoplightio/studio/releases/latest
           tag-query: .tag_name
-          version-query: .name
+          version-query: .tag_name
           url-query: .assets[] | select(.browser_download_url != null) | select(.browser_download_url
             | contains($tag)) | select(.browser_download_url | endswith("stoplight-studio-linux-x86_64.AppImage"))
             | .browser_download_url
